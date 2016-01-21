@@ -36,6 +36,9 @@ namespace cis237inclass1
             return this.firstName + " " + this.lastName;
         }
 
+
+        //Override method that will print all of the fields
+        //It overrides the the default To String that every objest ets for free!
         public override string ToString()
         {
             return this.firstName + " " + this.lastName + " " + this.weeklySalary.ToString("c");
