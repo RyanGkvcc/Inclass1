@@ -39,11 +39,18 @@ namespace cis237inclass1
             Employee[] employees = new Employee[10];
 
             // Instanciate some employees into the array
-            employees[0] = new Employee("James", "Kirk", 453.00m);
-            employees[1] = new Employee("Jean-Luc", "Picard", 290.00m);
-            employees[2] = new Employee("Benjamin", "Sisko", 587.00m);
-            employees[3] = new Employee("Kathryn", "Janeway", 194.00m);
-            employees[4] = new Employee("Johnathan", "Archer", 394.00m);
+            //employees[0] = new Employee("James", "Kirk", 453.00m);
+            //employees[1] = new Employee("Jean-Luc", "Picard", 290.00m);
+            //employees[2] = new Employee("Benjamin", "Sisko", 587.00m);
+            //employees[3] = new Employee("Kathryn", "Janeway", 194.00m);
+            //employees[4] = new Employee("Johnathan", "Archer", 394.00m);
+
+            //Lets use the new CSVProcessor we made!
+            CSVProcessor csvProcessor = new CSVProcessor();
+
+            //Call the ImportCSV method passing the path, and the employees array
+            //ove so they can be used
+            csvProcessor.ImportCSV("../data/employees.csv", employees);
 
 
             //A fo each loop that will loop through each element of the employees array
@@ -65,9 +72,23 @@ namespace cis237inclass1
             //we can take advantage of by just passing in any parameters
             UserInterface ui = new UserInterface();
 
+
+            //This is not a valid statement. Because we are trying to make
+            //an instance of a statice class. it won't work.
+            //SaticUserInterface stui = new StaticUserInterface();
+
             //Call the GetUserInput method of the UI class. It will return
             //a valid integer that represents the choice they want to do.
             int choice = ui.GetUserInput();
+
+            //To use a static class to execute methods we simply call the
+            //method on the class name, (or type). Since it is not possible
+            //to use the 'new' keyword and make an instance, the only way
+            //we can access the class is through the class name, so that
+            //is what we do. Here we are calling the GetUserInterface method
+            //on the class name to get it to run.
+
+            //choice = StaticUserInterface.GetUserInput();
 
             //While the choice is not the exit choice (which in this case is 2)
             while (choice!= 2)
@@ -77,7 +98,7 @@ namespace cis237inclass1
                 if (choice == 1)
                 {
                     //Create a empty string to concat to.
-                    string allOutput = " ";
+                    string allOutput = "";
                     //For each employee in the employees array.
                     foreach (Employee employee in employees)
                     {
